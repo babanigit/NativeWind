@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@rneui/themed": "^4.0.0-rc.8",
     "expo": "~50.0.8",
     "expo-status-bar": "~1.11.1",
     "nativewind": "^2.0.11",
