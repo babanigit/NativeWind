@@ -1,23 +1,42 @@
 import { StatusBar } from "expo-status-bar";
-import { ScrollView, Text, View } from "react-native";
+import { SafeAreaView, ScrollView, Text, View } from "react-native";
 // import { ThemeProvider } from "@rneui/themed";
 
 import Main from "./conteners/Main";
 import { useState } from "react";
 
 import { themes } from "./assets/theme";
-
-
+import SearchBox from "./components/SearchBox";
 
 export default function App() {
-  const[ThemeState,setThemeState]= useState("light");
+  const [ThemeState, setThemeState] = useState("light");
   return (
-    <View 
-    className=" h-screen w-full flex"
+    <SafeAreaView
+      // style={{backgroundColor:}}
+      className=" h-full w-full  bg-black text-slate-50"
     >
-    {/* <Text>hello</Text> */}
-      <Main setTheme={setThemeState} Theme={themes[ThemeState]}  />
-    </View>
+
+      <ScrollView
+       keyboardShouldPersistTaps="handled"
+       className=" h-screen"
+       >
+
+
+      
+
+
+      <Text className=" text-slate-50 ">hello there</Text>
+      <SearchBox />
+
+      {/* <Main setTheme={setThemeState} Theme={themes[ThemeState]}  /> */}
+      {/* <StatusBar style="auto" /> */}
+
+
+      </ScrollView>
+
+
+
+    </SafeAreaView>
     // <ThemeProvider>
     //   <Main />
     // </ThemeProvider>
