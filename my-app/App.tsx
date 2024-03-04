@@ -10,7 +10,7 @@ import SearchBox from "./components/SearchBox";
 import User from "./components/User";
 import CardList from "./components/CardList";
 
-type Data = {
+export type Data = {
   avatar_url: string;
   followers: string | number;
   following: string | number;
@@ -36,20 +36,23 @@ export default function App() {
   }, []);
 
   return (
-    <SafeAreaView className=" h-full w-full  bg-black text-slate-50">
+    <SafeAreaView className=" h-full w-full   bg-black text-slate-50">
       <ScrollView
         keyboardShouldPersistTaps="handled"
-        className=" h-full p-4 mx-auto"
+        className=" h-full p-4 mx-auto "
       >
         <SearchBox onSearch={search} />
 
-        {/* if the data is available then it will show the below content */}
-        {data && (
-          <>
-            <User src={data?.avatar_url} username={data?.login} />
-            <CardList />
-          </>
-        )}
+        <View className=" border-2 border-blue-400 rounded-lg">
+
+          {/* if the data is available then it will show the below content */}
+          {data && (
+            <>
+              <User src={data?.avatar_url} username={data?.login} />
+              <CardList data={data} />
+            </>
+          )}
+        </View>
 
         {/* <Main setTheme={setThemeState} Theme={themes[ThemeState]}  /> */}
         {/* <StatusBar style="auto" /> */}
