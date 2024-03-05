@@ -20,8 +20,8 @@ const Card=({num,text,...other}:Props2)=> {
         <>
         <View className=' flex justify-center items-center rounded-md w-36 h-36' {...other}>
             <View>
-                <Text className=' text-gray-50 font-semibold text-center'>{num} </Text>
-                <Text className=' text-gray-50 font-semibold mt-3 '>{text} </Text>
+                <Text className=' dark:text-gray-50 font-semibold text-center'>{num} </Text>
+                <Text className='dark:text-gray-50 font-semibold mt-3 '>{text} </Text>
             </View>
         </View>
         </>

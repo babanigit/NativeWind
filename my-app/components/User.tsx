@@ -13,7 +13,7 @@ const User = ({src,username}: Props) => {
       <Image source={{uri:src}}
       className='w-10 h-10 rounded-full'
       />
-            <Text className=' text-lg text-gray-200 font-semibold'> {username} </Text>
+            <Text className=' text-lg dark:text-gray-200 font-semibold'> {username} </Text>
     </View>
   )
 }

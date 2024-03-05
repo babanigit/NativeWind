@@ -15,8 +15,8 @@ const SearchBox = ({onSearch}: Props) => {
         onChangeText={(text: string) => {
             setUserName(text);
           }}
-          className=" border-2 rounded-md px-4 p-2 m-3 border-white text-white "
-        placeholderTextColor="#ffffff"
+          className=" border-2 rounded-md px-4 p-2 m-3 dark:border-white dark:text-white "
+        placeholderTextColor="#8E8E8E"
       />
       <Pressable className=" bg-blue-400 h-11 rounded-lg w-24 m-3 border-2 border-blue-800 justify-center items-center"
       onPress={()=>{onSearch(userName)}}

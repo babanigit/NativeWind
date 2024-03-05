@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, ScrollView, Text, View } from "react-native";
+import { SafeAreaView, ScrollView, Switch, Text, View } from "react-native";
 // import { ThemeProvider } from "@rneui/themed";
 
 import Main from "./conteners/Main";
@@ -9,6 +9,7 @@ import { themes } from "./assets/theme";
 import SearchBox from "./components/SearchBox";
 import User from "./components/User";
 import CardList from "./components/CardList";
+import { useColorScheme } from "nativewind";
 
 export type Data = {
   avatar_url: string;
@@ -16,11 +17,14 @@ export type Data = {
   following: string | number;
   login: string;
   public_repos: string | number;
+  message: string;
 };
 
 export default function App() {
   const [ThemeState, setThemeState] = useState("light");
   const [data, setData] = useState<Data>();
+  const { colorScheme, toggleColorScheme } = useColorScheme();
+  console.log(colorScheme)
 
   const search = useCallback(async (searchTerm: string) => {
     if (searchTerm == "") {
@@ -36,17 +40,41 @@ export default function App() {
   }, []);
 
   return (
-    <SafeAreaView className=" h-full w-full   bg-black text-slate-50">
+    <SafeAreaView className=" h-full w-full dark:bg-gray-900 dark:text-slate-50">
       <ScrollView
         keyboardShouldPersistTaps="handled"
         className=" h-full p-4 mx-auto "
       >
+        <StatusBar style="auto" />
+
+        <View className=" w-full h-max  flex-row justify-between items-center   mt-6 p-3">
+          <Text className="dark:text-white text-2xl  flex justify-center items-center w-48 p-3 h-auto ">
+            GIT STATES
+          </Text>
+
+          <Switch
+            value={colorScheme == "dark"}
+            onChange={toggleColorScheme}
+            className="border w-16 bg-opacity-0 "
+          />
+        </View>
+
         <SearchBox onSearch={search} />
 
         <View className=" border-2 border-blue-400 rounded-lg">
-
           {/* if the data is available then it will show the below content */}
-          {data && (
+
+          {data?.avatar_url == undefined ? (
+            // <NotFoun />
+            <>
+              <View className="h-auto justify-center items-center">
+                <Text className=" dark:text-blue-50 text-xl font-semibold m-12 ">
+                  {" "}
+                  {data?.message}
+                </Text>
+              </View>
+            </>
+          ) : (
             <>
               <User src={data?.avatar_url} username={data?.login} />
               <CardList data={data} />
@@ -55,7 +83,6 @@ export default function App() {
         </View>
 
         {/* <Main setTheme={setThemeState} Theme={themes[ThemeState]}  /> */}
-        {/* <StatusBar style="auto" /> */}
       </ScrollView>
     </SafeAreaView>
     // <ThemeProvider>
