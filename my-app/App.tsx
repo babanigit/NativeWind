@@ -49,7 +49,7 @@ export default function App() {
 
         <View className=" w-full h-max  flex-row justify-between items-center   mt-6 p-3">
           <Text className="dark:text-white text-2xl  flex justify-center items-center w-48 p-3 h-auto ">
-            GIT STATES
+            GIT STATS
           </Text>
 
           <Switch
